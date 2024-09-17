@@ -1,6 +1,7 @@
 package fr.opc.practice.p9a11y
 
 import android.os.Bundle
+import android.view.accessibility.AccessibilityEvent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import fr.opc.practice.p9a11y.databinding.ActivityCase2Binding
@@ -39,8 +40,11 @@ class Case2Activity : AppCompatActivity() {
     private fun setFavouriteButtonIcon(isFavourite: Boolean) {
         if (isFavourite) {
             binding.favouriteButton.setImageResource(R.drawable.ic_favourite_on)
+            binding.favouriteButton.contentDescription = "Ajouter aux favoris"
         } else {
             binding.favouriteButton.setImageResource(R.drawable.ic_favourite_off)
+            binding.favouriteButton.contentDescription = "Retirer des favoris"
         }
+        binding.favouriteButton.sendAccessibilityEvent(AccessibilityEvent.TYPE_VIEW_FOCUSED)
     }
 }
